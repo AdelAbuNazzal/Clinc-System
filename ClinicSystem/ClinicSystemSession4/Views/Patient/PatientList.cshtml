@@ -1,0 +1,60 @@
+﻿@model List<Patient>
+
+@{
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+@section Body{ 
+    <form method="post">
+        <div class="row">
+            <div class="col-xs-1">Name</div>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" name="txtSearchName" />
+            </div>
+            <div class="col-xs-1">
+                <input type="submit" value="Search" class="form-control" asp-action="SearchPatient" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Birth date
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                        </tr>
+                        @foreach (Patient item in Model)
+                        {
+                        <tr>
+                            <td>
+                               @item.ID
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.BDate
+                            </td>
+                            <td>
+                                <img src='@item.Path' style="width:100px; height:100px" />
+                            </td>
+                        </tr>
+                        }
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+} 

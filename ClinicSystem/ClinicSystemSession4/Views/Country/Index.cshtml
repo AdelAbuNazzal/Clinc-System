@@ -1,0 +1,68 @@
+﻿@model vmCountry
+
+@{
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+@section Body{
+    <form method="post">
+        <div class="row">
+            <div class="col-xs-1">Name</div>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" name="txtSearchName" />
+            </div>
+            <div class="col-xs-1">
+                <input type="submit" value="Search" class="form-control" asp-action="search" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                        </tr>
+
+
+                        @foreach (Country item in Model.licountry)
+                        {
+                            <tr>
+                                <td>
+                                   @item.ID 
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                            </tr>
+                        }
+
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row" style="background-color:#eee">
+            <div class="col-xs-12">Entry</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                Name
+            </div>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" asp-for="country.Name" />
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xs-5">
+                <input type="submit" value="Save" class="btn btn-primary" asp-action="Save" />
+            </div>
+        </div>
+    </form>
+}
